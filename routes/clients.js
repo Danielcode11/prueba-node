@@ -6,14 +6,14 @@ const { v4: uuidv4 } = require('uuid');
 
 
 // Ruta para obtener todos los clientes
-router.get('/clients', (req, res) => {
+router.get('/', (req, res) => {
     const clients = getClients();
     res.json(clients);
 });
 
 
 // Ruta para crear un nuevo cliente
-router.post('/clients', (req, res) => {
+router.post('/', (req, res) => {
     const newClient = req.body;
     newClient.id = uuidv4(); // Asigna un UUID como ID
     const clients = getClients();
@@ -24,7 +24,7 @@ router.post('/clients', (req, res) => {
 
 //CRUD COMPLETO
 // Ruta para obtener un cliente por ID
-router.get('/clients/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     const clients = getClients();
     const client = clients.find(c => c.id === req.params.id);
     if (client) {
@@ -35,7 +35,7 @@ router.get('/clients/:id', (req, res) => {
 });
 
 // Ruta para actualizar un cliente
-router.put('/clients/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     const clients = getClients();
     const index = clients.findIndex(c => c.id === req.params.id);
     if (index !== -1) {
@@ -48,7 +48,7 @@ router.put('/clients/:id', (req, res) => {
 });
 
 // Ruta para eliminar un cliente
-router.delete('/clients/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const clients = getClients();
     const filteredClients = clients.filter(c => c.id !== req.params.id);
     saveClients(filteredClients);
