@@ -3,15 +3,9 @@ const router = express.Router();
 const { getClients } = require('../utils/fileUtils');
 const {calcularEdad} = require('../utils/calcularEdad');
 
-// Ruta para obtener todos los clientes
-router.get('/clients', (req, res) => {
-    const clients = getClients();
-    res.json(clients);
-});
-
 
 // Ruta para obtener estadísticas de clientes
-router.get('/clients/stats', async (req, res) => {
+router.get('/statistics', async (req, res) => {
     try {
       const clients = await getClients();
       const totalClients = clients.length;
