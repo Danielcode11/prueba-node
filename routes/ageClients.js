@@ -4,14 +4,8 @@ const { getClients } = require('../utils/fileUtils');
 const {calcularEdad} = require('../utils/calcularEdad');
 
 
-// Ruta para obtener todos los clientes
-router.get('/clients', (req, res) => {
-    const clients = getClients();
-    res.json(clients);
-});
-
 // Ruta para obtener clientes ordenados por edad
-router.get('/clients/sorted-by-age', async (req, res) => {
+router.get('/sorted-by-age', async (req, res) => {
     try {
       const clients = await getClients();
       const sortedClients = clients.slice().sort((a, b) => {
